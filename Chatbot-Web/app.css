@@ -48,36 +48,49 @@ body {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .api-key-container input {
     flex: 1;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    padding: 12px 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
     backdrop-filter: blur(10px);
 }
 
 .api-key-container input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: #666;
+}
+
+.api-key-container input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: white;
 }
 
 .api-key-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
+    padding: 12px 24px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    font-size: 1rem;
 }
 
 .api-key-container button:hover {
-    background: rgba(255, 255, 255, 0.4);
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .api-key-container.hidden {

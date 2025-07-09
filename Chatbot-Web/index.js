@@ -31,10 +31,11 @@ class AlexisChatbot {
     }
 
     checkApiKey() {
-        if (this.apiKey && this.apiKey !== 'YOUR_API_KEY_HERE') {
+        if (this.apiKey && this.apiKey !== 'YOUR_API_KEY_HERE' && this.apiKey.startsWith('sk-')) {
             this.apiKeyContainer.classList.add('hidden');
             this.enableChat();
         } else {
+            this.apiKeyContainer.classList.remove('hidden');
             this.disableChat();
         }
     }
