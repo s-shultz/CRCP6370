@@ -4,8 +4,14 @@ class AlexisChatbot {
         this.messageInput = document.getElementById('messageInput');
         this.sendButton = document.getElementById('sendButton');
         this.loadingIndicator = document.getElementById('loadingIndicator');
+        this.apiKeyContainer = document.getElementById('apiKeyContainer');
+        this.apiKeyInput = document.getElementById('apiKeyInput');
+        this.saveApiKeyButton = document.getElementById('saveApiKey');
+        
+        this.apiKey = localStorage.getItem('openai_api_key') || '';
         
         this.setupEventListeners();
+        this.checkApiKey();
     }
 
     setupEventListeners() {
@@ -15,6 +21,44 @@ class AlexisChatbot {
                 this.handleSendMessage();
             }
         });
+        
+        this.saveApiKeyButton.addEventListener('click', () => this.saveApiKey());
+        this.apiKeyInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.saveApiKey();
+            }
+        });
+    }
+
+    checkApiKey() {
+        if (this.apiKey && this.apiKey !== 'YOUR_API_KEY_HERE') {
+            this.apiKeyContainer.classList.add('hidden');
+            this.enableChat();
+        } else {
+            this.disableChat();
+        }
+    }
+
+    saveApiKey() {
+        const key = this.apiKeyInput.value.trim();
+        if (key) {
+            this.apiKey = key;
+            localStorage.setItem('openai_api_key', key);
+            this.apiKeyContainer.classList.add('hidden');
+            this.enableChat();
+        }
+    }
+
+    enableChat() {
+        this.messageInput.disabled = false;
+        this.sendButton.disabled = false;
+        this.messageInput.placeholder = "Type your message here...";
+    }
+
+    disableChat() {
+        this.messageInput.disabled = true;
+        this.sendButton.disabled = true;
+        this.messageInput.placeholder = "Please enter your API key first...";
     }
 
     async handleSendMessage() {
@@ -75,7 +119,7 @@ class AlexisChatbot {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${CONFIG.OPENAI_API_KEY}`
+                'Authorization': `Bearer ${this.apiKey}`
             },
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',

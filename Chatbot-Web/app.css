@@ -41,6 +41,47 @@ body {
     font-size: 1.1rem;
     opacity: 0.9;
     font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.api-key-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.api-key-container input {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.api-key-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.api-key-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.api-key-container button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.api-key-container.hidden {
+    display: none;
 }
 
 .chat-container {
