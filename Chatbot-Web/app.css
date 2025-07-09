@@ -10,8 +10,9 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
@@ -21,13 +22,18 @@ body {
     width: 100%;
     max-width: 500px;
     overflow: hidden;
+    margin-top: 20px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
     background: linear-gradient(135deg, #ff6b6b, #ffa8a8);
     color: white;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .header h1 {
@@ -46,20 +52,22 @@ body {
 
 .api-key-container {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    padding: 15px;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
 }
 
 .api-key-container input {
     flex: 1;
-    padding: 12px 18px;
+    min-width: 200px;
+    padding: 10px 15px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px;
-    font-size: 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
     background: rgba(255, 255, 255, 0.9);
     color: #333;
     backdrop-filter: blur(10px);
@@ -76,15 +84,17 @@ body {
 }
 
 .api-key-container button {
-    padding: 12px 24px;
+    padding: 10px 20px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px;
+    border-radius: 20px;
     background: rgba(255, 255, 255, 0.9);
     color: #333;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .api-key-container button:hover {
@@ -98,9 +108,10 @@ body {
 }
 
 .chat-container {
-    height: 500px;
+    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 400px;
 }
 
 .chat-messages {
@@ -237,21 +248,55 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
     .container {
-        margin: 10px;
+        margin-top: 10px;
         border-radius: 15px;
+        min-height: 500px;
+    }
+    
+    .header {
+        padding: 15px;
     }
     
     .header h1 {
         font-size: 2rem;
+        margin-bottom: 8px;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .api-key-container {
+        margin-top: 10px;
+        padding: 10px;
+        gap: 6px;
+    }
+    
+    .api-key-container input {
+        min-width: 150px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .api-key-container button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
     }
     
     .chat-container {
-        height: 400px;
+        min-height: 350px;
     }
     
     .message-content {
         max-width: 90%;
+        padding: 12px 16px;
+        font-size: 0.9rem;
     }
     
     #messageInput {
@@ -262,6 +307,80 @@ body {
     #sendButton {
         padding: 12px 20px;
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        margin-top: 5px;
+        border-radius: 10px;
+        min-height: 450px;
+    }
+    
+    .header {
+        padding: 12px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    .api-key-container {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 8px;
+        padding: 8px;
+    }
+    
+    .api-key-container input {
+        min-width: auto;
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .api-key-container button {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .chat-container {
+        min-height: 300px;
+    }
+    
+    .chat-messages {
+        padding: 15px;
+    }
+    
+    .message-content {
+        max-width: 95%;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .chat-input-container {
+        padding: 15px;
+    }
+    
+    #messageInput {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+    
+    #sendButton {
+        padding: 10px 16px;
+        font-size: 0.85rem;
     }
 }
 
